@@ -1,6 +1,6 @@
 import { MODAL_OPEN, MODAL_CLOSE } from "./modalConstants";
 
-const openModal = (modalType, modalProps) => {
+export const openModal = (modalType, modalProps) => {
   return {
     type: MODAL_OPEN,
     payload: {
@@ -10,7 +10,7 @@ const openModal = (modalType, modalProps) => {
   };
 };
 
-const closeModal = () => {
+export const closeModal = () => {
   return {
     type: MODAL_CLOSE
   };
