@@ -162,7 +162,6 @@ class EventForm extends Component {
                 <Field
                   name="venue"
                   type="text"
-                  component={TextInput}
                   component={PlaceInput}
                   options={{
                     location: new google.maps.LatLng(this.state.cityLatLng),
