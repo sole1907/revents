@@ -31,7 +31,7 @@ class PlaceInput extends Component {
     return (
       <Form.Field error={touched && !!error} width={width}>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpisPy6qIHpWEGiBZ3MPBU0-j3UGr-epk&libraries=places"
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpisPy6qIHpWEGiBZ3MPBU0-yyyyy-xxx&libraries=places"
           onLoad={this.handleScriptLoad}
         />
         {this.state.scriptLoaded && (
