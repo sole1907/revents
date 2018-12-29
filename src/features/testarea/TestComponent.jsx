@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import { incrementAsync, decrementAsync } from "./testActions";
+import { incrementAsync, decrementAsync, testPermission } from "./testActions";
 import { openModal } from "../modals/modalActions";
 
 const mapState = state => ({
@@ -17,7 +17,8 @@ const mapState = state => ({
 const actions = {
   incrementAsync,
   decrementAsync,
-  openModal
+  openModal,
+  testPermission
 };
 
 export class TestComponent extends Component {
@@ -61,12 +62,13 @@ export class TestComponent extends Component {
       decrementAsync,
       data,
       openModal,
-      loading
+      loading,
+      testPermission
     } = this.props;
     return (
       <div>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxYYQgGahK_ARSGLZUB9_pYI2cx9UZbyU&libraries=places"
+          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8P6xCmKbwP6LlX28DSWgWUHyfDIV3ePA&libraries=places"
           onLoad={this.handleScriptLoad}
         />
         <h1>Test Area</h1>
@@ -87,6 +89,11 @@ export class TestComponent extends Component {
           onClick={() => openModal("TestModal", { data: 43 })}
           color="teal"
           content="Open Modal"
+        />
+        <Button
+          onClick={testPermission}
+          color="teal"
+          content="Test Permissions"
         />
         <br />
         <br />

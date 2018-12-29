@@ -73,6 +73,7 @@ export const updateEvent = event => {
       toastr.success("Success!", "Event has been updated");
     } catch (error) {
       dispatch(asyncActionError());
+      console.log(error);
       toastr.error("Oops", "Something went wrong");
     }
   };
