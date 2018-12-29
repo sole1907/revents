@@ -18,6 +18,7 @@ import DateInput from "../../../app/common/form/DateInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import Script from "react-load-script";
+import { config } from "../../../app/config/config";
 
 const mapState = state => {
   let event = {};
@@ -135,7 +136,9 @@ class EventForm extends Component {
     return (
       <Grid>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8P6xCmKbwP6LlX28DSWgWUHyfDIV3ePA&libraries=places"
+          url={`https://maps.googleapis.com/maps/api/js?key=${
+            config.googleApiKey
+          }&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
         <Grid.Column width={10}>
@@ -208,13 +211,17 @@ class EventForm extends Component {
               >
                 Cancel
               </Button>
-              <Button
-                onClick={() => cancelToggle(!event.cancelled, event.id)}
-                type="button"
-                color={event.cancelled ? "green" : "red"}
-                floated="right"
-                content={event.cancelled ? "Reactivate Event" : "Cancel event"}
-              />
+              {event.id && (
+                <Button
+                  onClick={() => cancelToggle(!event.cancelled, event.id)}
+                  type="button"
+                  color={event.cancelled ? "green" : "red"}
+                  floated="right"
+                  content={
+                    event.cancelled ? "Reactivate Event" : "Cancel event"
+                  }
+                />
+              )}
             </Form>
           </Segment>
         </Grid.Column>

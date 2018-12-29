@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Label } from "semantic-ui-react";
 import Script from "react-load-script";
 import PlacesAutocomplete from "react-places-autocomplete";
+import { config } from "../../../app/config/config";
 
 const styles = {
   autocompleteContainer: {
@@ -31,7 +32,9 @@ class PlaceInput extends Component {
     return (
       <Form.Field error={touched && !!error} width={width}>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8P6xCmKbwP6LlX28DSWgWUHyfDIV3ePA&libraries=places"
+          url={`https://maps.googleapis.com/maps/api/js?key=${
+            config.googleApiKey
+          }&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
         {this.state.scriptLoaded && (

@@ -21,3 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 functions/node_modules/**
+
+#config
+/src/app/config

@@ -8,6 +8,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 import { incrementAsync, decrementAsync, testPermission } from "./testActions";
 import { openModal } from "../modals/modalActions";
+import { config } from "../../app/config/config";
 
 const mapState = state => ({
   data: state.test.data,
@@ -68,7 +69,9 @@ export class TestComponent extends Component {
     return (
       <div>
         <Script
-          url="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8P6xCmKbwP6LlX28DSWgWUHyfDIV3ePA&libraries=places"
+          url={`https://maps.googleapis.com/maps/api/js?key=${
+            config.googleApiKey
+          }&libraries=places`}
           onLoad={this.handleScriptLoad}
         />
         <h1>Test Area</h1>
