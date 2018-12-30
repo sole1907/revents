@@ -45,8 +45,9 @@ export const uploadProfileImage = (file, fileName) => async (
     dispatch(asyncActionStart());
     // upload the file to firebase storage
     let uploadedFile = await firebase.uploadFile(path, file, null, options);
+    console.log(uploadedFile);
     // get url of image
-    let downloadURL = await uploadedFile.uploadTaskSnapshot.downloadURL;
+    let downloadURL = await uploadedFile.uploadTaskSnapshot.ref.getDownloadURL();
     // get userdoc
     let userDoc = await firestore.get(`users/${user.uid}`);
     // check if user has photo, if not update profile with new image
@@ -70,6 +71,7 @@ export const uploadProfileImage = (file, fileName) => async (
         url: downloadURL
       }
     );
+
     dispatch(asyncActionFinish());
   } catch (error) {
     console.log(error);
